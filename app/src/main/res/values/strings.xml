@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MultipleViewWithRecyclerView</string>
+    <string name="view_all">view all</string>
 </resources>
