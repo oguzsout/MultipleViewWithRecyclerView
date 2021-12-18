@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MultipleViewWithRecyclerView</string>
     <string name="view_all">view all</string>
+    <string name="total_movies">%1$d movies</string>
 </resources>
