@@ -1,6 +1,7 @@
-package com.oguzdogdu.multipleviewwithrecyclerview.data
+package com.oguzdogdu.multipleviewwithrecyclerview.data.di
 
 import androidx.viewbinding.BuildConfig
+import com.oguzdogdu.multipleviewwithrecyclerview.data.network.Api
 import com.oguzdogdu.multipleviewwithrecyclerview.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides

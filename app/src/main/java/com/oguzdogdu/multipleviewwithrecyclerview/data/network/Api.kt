@@ -1,4 +1,4 @@
-package com.oguzdogdu.multipleviewwithrecyclerview.data
+package com.oguzdogdu.multipleviewwithrecyclerview.data.network
 
 import com.oguzdogdu.multipleviewwithrecyclerview.ui.HomeRecyclerViewItem
 import retrofit2.http.GET
