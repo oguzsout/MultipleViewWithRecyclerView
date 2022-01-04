@@ -27,7 +27,7 @@ object AppModule {
 
     @Singleton
     @Provides
-    private fun getRetrofitClient(): OkHttpClient {
+     fun getRetrofitClient(): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor { chain ->
                 chain.proceed(chain.request().newBuilder().also {

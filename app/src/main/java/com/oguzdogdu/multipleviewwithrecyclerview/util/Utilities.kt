@@ -1,9 +1,8 @@
 package com.oguzdogdu.multipleviewwithrecyclerview.util
 
 import android.app.Activity
-import android.net.Uri
 import android.view.View
-import com.facebook.drawee.view.SimpleDraweeView
+import androidx.annotation.Nullable
 import com.google.android.material.snackbar.Snackbar
 import com.oguzdogdu.multipleviewwithrecyclerview.R
 
@@ -15,8 +14,8 @@ fun View.hide() {
     this.visibility = View.GONE
 }
 
-fun SimpleDraweeView.loadImage(url: String) {
-    this.setImageURI(Uri.parse(url))
+fun setImageURI(@Nullable uriString: String?) {
+    setImageURI(uriString)
 }
 
 fun Activity.snackbar(msg: String, action: (() -> Unit)? = null) {
