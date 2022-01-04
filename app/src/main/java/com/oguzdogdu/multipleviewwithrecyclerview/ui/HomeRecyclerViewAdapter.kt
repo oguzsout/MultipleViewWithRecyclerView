@@ -1,7 +1,6 @@
 package com.oguzdogdu.multipleviewwithrecyclerview.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.oguzdogdu.multipleviewwithrecyclerview.R
@@ -11,13 +10,11 @@ import com.oguzdogdu.multipleviewwithrecyclerview.databinding.ItemTitleBinding
 
 class HomeRecyclerViewAdapter : RecyclerView.Adapter<HomeRecyclerViewHolder>() {
 
-    private var items = listOf<HomeRecyclerViewItem>()
+    var items = listOf<HomeRecyclerViewItem>()
         set(value) {
             field = value
             notifyDataSetChanged()
         }
-
-     var itemClickListener: ((view: View, item: HomeRecyclerViewItem, position: Int) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HomeRecyclerViewHolder {
         return when (viewType) {
@@ -47,11 +44,10 @@ class HomeRecyclerViewAdapter : RecyclerView.Adapter<HomeRecyclerViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: HomeRecyclerViewHolder, position: Int) {
-        holder.itemClickListener = itemClickListener
         when (holder) {
-            is HomeRecyclerViewHolder.DirectorViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Director)
-            is HomeRecyclerViewHolder.MovieViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Movie)
             is HomeRecyclerViewHolder.TitleViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Title)
+            is HomeRecyclerViewHolder.MovieViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Movie)
+            is HomeRecyclerViewHolder.DirectorViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Director)
         }
     }
 
