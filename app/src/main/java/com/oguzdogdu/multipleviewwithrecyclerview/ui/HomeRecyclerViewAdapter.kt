@@ -25,15 +25,15 @@ class HomeRecyclerViewAdapter : RecyclerView.Adapter<HomeRecyclerViewHolder>() {
                     false
                 )
             )
-            R.layout.item_movie -> HomeRecyclerViewHolder.MovieViewHolder(
-                ItemMovieBinding.inflate(
+            R.layout.item_director -> HomeRecyclerViewHolder.DirectorViewHolder(
+                ItemDirectorBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
                 )
             )
-            R.layout.item_director -> HomeRecyclerViewHolder.DirectorViewHolder(
-                ItemDirectorBinding.inflate(
+            R.layout.item_movie -> HomeRecyclerViewHolder.MovieViewHolder(
+                ItemMovieBinding.inflate(
                     LayoutInflater.from(parent.context),
                     parent,
                     false
@@ -43,21 +43,20 @@ class HomeRecyclerViewAdapter : RecyclerView.Adapter<HomeRecyclerViewHolder>() {
         }
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return when (items[position]) {
+            is HomeRecyclerViewItem.Title -> R.layout.item_title
+            is HomeRecyclerViewItem.Director -> R.layout.item_director
+            is HomeRecyclerViewItem.Movie -> R.layout.item_movie
+        }
+    }
+
     override fun onBindViewHolder(holder: HomeRecyclerViewHolder, position: Int) {
         when (holder) {
             is HomeRecyclerViewHolder.TitleViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Title)
-            is HomeRecyclerViewHolder.MovieViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Movie)
             is HomeRecyclerViewHolder.DirectorViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Director)
+            is HomeRecyclerViewHolder.MovieViewHolder -> holder.bind(items[position] as HomeRecyclerViewItem.Movie)
         }
     }
-
     override fun getItemCount() = items.size
-
-    override fun getItemViewType(position: Int): Int {
-        return when (items[position]) {
-            is HomeRecyclerViewItem.Director -> R.layout.item_director
-            is HomeRecyclerViewItem.Movie -> R.layout.item_movie
-            is HomeRecyclerViewItem.Title -> R.layout.item_title
-        }
-    }
 }

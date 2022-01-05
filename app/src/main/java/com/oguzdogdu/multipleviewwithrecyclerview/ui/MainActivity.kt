@@ -23,13 +23,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.recyclerView.apply {
-            setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(applicationContext)
             adapter = homeRecyclerViewAdapter
         }
 
-        viewModel.homeListItemsLiveData.observe(this){ result ->
-            when(result){
+        viewModel.homeListItemsLiveData.observe(this) { result ->
+            when (result) {
                 is Resource.Failure -> {
                     binding.progressBar.hide()
                     //handle failure case here
