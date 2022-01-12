@@ -8,6 +8,7 @@ import com.oguzdogdu.multipleviewwithrecyclerview.databinding.ActivityMainBindin
 import com.oguzdogdu.multipleviewwithrecyclerview.util.Resource
 import com.oguzdogdu.multipleviewwithrecyclerview.util.hide
 import com.oguzdogdu.multipleviewwithrecyclerview.util.show
+import com.oguzdogdu.multipleviewwithrecyclerview.util.snackbar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -23,7 +24,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.recyclerView.apply {
+
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            setHasFixedSize(true)
             adapter = homeRecyclerViewAdapter
+        }
+
+        homeRecyclerViewAdapter.itemClickListener = { view, item, position ->
+            val message = when (item) {
+                is HomeRecyclerViewItem.Director -> "Director ${item.name} Clicked"
+                is HomeRecyclerViewItem.Movie -> "Movie ${item.title} Clicked"
+                is HomeRecyclerViewItem.Title -> "View All Clicked"
+            }
+            snackbar(message)
         }
 
         viewModel.homeListItemsLiveData.observe(this) { result ->
